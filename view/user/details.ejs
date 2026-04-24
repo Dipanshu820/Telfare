@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ride Price Comparison</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="max-w-5xl mx-auto px-5 py-8">
+      <!-- Top Bar -->
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <div class="text-lg font-extrabold">Ride Price Comparison</div>
+        <!-- User menu -->
+        <div class="relative">
+          <button
+            id="userMenuBtn"
+            class="flex items-center gap-3 bg-white px-4 py-2 rounded-full shadow focus:outline-none"
+          >
+            <div
+              class="w-7 h-7 rounded-full bg-gray-900 text-white text-xs font-bold grid place-items-center"
+            >
+              DK
+            </div>
+            <div class="hidden sm:block text-left">
+              <p class="text-sm font-semibold">Dipanshu</p>
+              <p class="text-xs text-gray-400">Member</p>
+            </div>
+            <svg
+              class="w-4 h-4 text-gray-500 ml-1"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <!-- Dropdown -->
+          <div
+            id="userMenu"
+            class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
+          >
+            <div class="py-1">
+              <a
+                href="/profile"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Profile</a
+              >
+              <a
+                href="/coupons"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Coupons</a
+              >
+              <a
+                href="/rewards"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Reward Points</a
+              >
+              <a
+                href="/support"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Customer Care</a
+              >
+              <a
+                href="/help"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Help</a
+              >
+              <a
+                href="/feedback"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Feedback</a
+              >
+              <div class="border-t my-1"></div>
+              <form action="/logout" method="POST">
+                <button
+                  type="submit"
+                  class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                >
+                  Logout
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-extrabold mb-2">
+          Find the cheapest ride instantly
+        </h1>
+        <p class="text-gray-500">
+          Compare prices across services without any extra clicks.
+        </p>
+      </div>
+
+      <!-- Pickup / Drop Summary -->
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        <div class="bg-white p-4 rounded-xl shadow">
+          <p class="text-xs text-gray-500">Pickup Location</p>
+          <p class="text-lg font-semibold text-gray-800"><%= Pickup %></p>
+        </div>
+        <div class="bg-white p-4 rounded-xl shadow">
+          <p class="text-xs text-gray-500">Drop Location</p>
+          <p class="text-lg font-semibold text-gray-800"><%= Drop %></p>
+        </div>
+      </div>
+
+      <!-- Results (always visible, no JS) -->
+      <div class="mt-8">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-lg font-bold">Available Rides</h2>
+          <span
+            class="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700"
+            >Best: Rapido</span
+          >
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          <!-- Uber -->
+          <div class="bg-white p-5 rounded-2xl shadow">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-gray-700 flex items-center gap-2">
+                <!-- High-quality inline car SVG (fills with current color) -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  class="w-5 h-5 text-gray-700"
+                  aria-hidden="true"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M3 11.5C3 10.12 4.12 9 5.5 9h13c1.38 0 2.5 1.12 2.5 2.5V16c0 .83-.67 1.5-1.5 1.5h-.5a1.5 1.5 0 0 1-3 0h-8a1.5 1.5 0 0 1-3 0H4.5C3.67 17.5 3 16.83 3 16v-4.5zM6.5 14a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"
+                  />
+                  <path
+                    d="M7 11V9.5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1V11"
+                    opacity="0.9"
+                  />
+                </svg>
+                Car
+              </h3>
+              <span class="text-xs text-gray-400"
+                >Distance <%= distance.toFixed(2) %> km</span
+              >
+            </div>
+            <p class="text-2xl font-bold mt-3">
+              ₹<%= distance > 1.5 ? ((distance - 1.5) * 25 + 1.5 *
+              37).toFixed(0) : (distance * 37).toFixed(0) %>
+            </p>
+            <button
+              class="mt-4 w-full rounded-lg bg-gray-900 py-2 text-sm font-semibold text-white hover:bg-black"
+            >
+              Book Car
+            </button>
+          </div>
+
+          <!-- Ola -->
+          <div class="bg-white p-5 rounded-2xl shadow">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-gray-700">Bus</h3>
+              <span class="text-xs text-gray-400"
+                >Distance <%= distance.toFixed(2) %> km</span
+              >
+            </div>
+            <p class="text-2xl font-bold mt-3">₹220</p>
+            <button
+              class="mt-4 w-full rounded-lg bg-gray-900 py-2 text-sm font-semibold text-white hover:bg-black"
+            >
+              Book Bus
+            </button>
+          </div>
+
+          <!-- Rapido -->
+          <div class="bg-white p-5 rounded-2xl shadow border border-green-200">
+            <div class="flex items-center justify-between">
+              <h3 class="font-semibold text-gray-700">Train</h3>
+              <span class="text-xs text-gray-400"
+                >Distance <%= distance.toFixed(2) %> km</span
+              >
+            </div>
+            <p class="text-2xl font-bold mt-3">₹190</p>
+            <button
+              class="mt-4 w-full rounded-lg bg-green-600 py-2 text-sm font-semibold text-white hover:bg-green-700"
+            >
+              Book Train
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mt-10 text-center text-xs text-gray-400">
+        © 2026 Ride Price Comparison — All rights reserved.
+      </footer>
+    </div>
+  </body>
+</html>

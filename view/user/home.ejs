@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ride Price Comparison</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/output.css">
+
+
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <div class="max-w-5xl mx-auto px-5 py-8">
+
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between gap-4 mb-6">
+      <div class="text-lg font-extrabold">Ride Price Comparison</div>
+      <!-- User menu -->
+      <div class="relative">
+        <button id="userMenuBtn" class="flex items-center gap-3 bg-white px-4 py-2 rounded-full shadow focus:outline-none">
+          <div class="w-7 h-7 rounded-full bg-gray-900 text-white text-xs font-bold grid place-items-center">DK</div>
+          <div class="hidden sm:block text-left">
+            <p class="text-sm font-semibold">Dipanshu</p>
+            <p class="text-xs text-gray-400">Member</p>
+          </div>
+          <svg class="w-4 h-4 text-gray-500 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="userMenu" class="  absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+          <div class="py-1">
+            <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+            <a href="/coupons" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Coupons</a>
+            <a href="/rewards" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Reward Points</a>
+            <a href="/support" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Customer Care</a>
+            <a href="/help" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Help</a>
+            <a href="/feedback" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Feedback</a>
+            <div class="border-t my-1"></div>
+            <form action="/logout" method="POST">
+              <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-extrabold mb-2">Find the cheapest ride instantly</h1>
+      <p class="text-gray-500">Compare prices across services without any extra clicks.</p>
+    </div>
+
+    <!-- Search Card -->
+     <form action="/details" method="POST">
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <div class="grid gap-4">
+        <input type="text" name="Pickup" placeholder="Pickup location"
+          class="p-3 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900"/>
+        <input type="text" name="Drop" placeholder="Drop location"
+          class="p-3 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900/20 focus:border-gray-900" />
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="mt-4 w-full rounded-lg bg-gray-900 py-3 text-sm font-semibold text-white hover:bg-black">
+        Submit
+      </button>
+      </form>
+
+      <!-- Coupon Badges -->
+      <div class="flex flex-wrap gap-2 mt-4">
+        <span class="px-3 py-1 text-xs font-bold rounded-full bg-indigo-100 text-indigo-800">WELCOME50</span>
+        <span class="px-3 py-1 text-xs font-bold rounded-full bg-green-100 text-green-800">SAVE20</span>
+        <span class="px-3 py-1 text-xs font-bold rounded-full bg-orange-100 text-orange-800">NIGHTRIDE</span>
+      </div>
+    </div>
+
+    <!-- Recent Bookings -->
+    <h2 class="mt-8 mb-3 text-lg font-bold">Recent Bookings</h2>
+
+    <div class="overflow-hidden rounded-xl shadow bg-white">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-gray-700">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold">Booking ID</th>
+            <th class="text-left px-4 py-3 font-semibold">Date</th>
+            <th class="text-left px-4 py-3 font-semibold">Coupon</th>
+            <th class="text-left px-4 py-3 font-semibold">For</th>
+            <th class="text-left px-4 py-3 font-semibold">Transport</th>
+            <th class="text-left px-4 py-3 font-semibold">Status</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y">
+          <tr>
+            <td class="px-4 py-3">#RB1024</td>
+            <td class="px-4 py-3">2026-04-08</td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold border border-dashed border-amber-300 bg-amber-50 text-amber-700">
+                WELCOME50
+              </span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">For You</span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700">Private</span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Completed</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">#RB1023</td>
+            <td class="px-4 py-3">2026-04-07</td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold border border-dashed border-gray-300 bg-gray-50 text-gray-500">
+                None
+              </span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-gray-200 text-gray-700">For Others</span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Public</span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-gray-200 text-gray-700">Scheduled</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-4 py-3">#RB1022</td>
+            <td class="px-4 py-3">2026-04-05</td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold border border-dashed border-amber-300 bg-amber-50 text-amber-700">
+                SAVE20
+              </span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">For You</span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700">Private</span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Completed</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="mt-10 text-center text-xs text-gray-400">
+      © 2026 Ride Price Comparison — All rights reserved.
+    </footer>
+
+  </div>
+</body>
+</html>
